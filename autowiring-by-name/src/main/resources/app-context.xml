@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="bookFrost" class="com.assignmentone.partone.two.byname.Book">
+		<constructor-arg value="16" type="Long"></constructor-arg>
+		<constructor-arg value="627472451" type="String"></constructor-arg>
+		<constructor-arg value="Shakespeare Poetry" type="String"></constructor-arg>
+		<constructor-arg value="12.34" type="Float"></constructor-arg>
+	</bean>
+    
+    
+    <bean id="targetByName" autowire="byName" class="com.assignmentone.partone.two.byname.Category"
+        lazy-init="true"
+       />
+
+</beans>
