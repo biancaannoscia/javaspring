@@ -14,11 +14,18 @@
 		<constructor-arg value="Frankenstein" type="String"></constructor-arg>
 		<constructor-arg value="20.00" type="Float"></constructor-arg>
 	</bean>
+	
+	<bean id="book3" class="com.partone.assignmentone.Book">
+		<property name="id" value="5"/>
+		<property name="isbn" value="976452846"/>
+		<property name="title" value="The Secret Garden"/>
+		<property name="price" value="12.00"/>
+	</bean>
 
 	<bean id="categoryMap" class="com.partone.assignmentone.Category">
 		<property name="booksMap">
 			<map>
-				<entry key="Key1" value-ref="book" />
+				<entry key="Key1" value-ref="book3" />
 				<entry key="Key2" value-ref="book2" />
 			</map>
 		</property>
@@ -28,13 +35,13 @@
 		<property name="booksSet">
 			<set>
 				<ref bean="book" />
-				<ref bean="book2" />
+				<ref bean="book3" />
 			</set>
 		</property>
 	</bean>
 
 	<bean id="categoryList" class="com.partone.assignmentone.Category"
-		p:booksList-ref="book">
+		p:booksList-ref="book2">
 	</bean>
 
 </beans>

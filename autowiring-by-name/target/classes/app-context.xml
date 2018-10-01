@@ -9,7 +9,7 @@
     <bean id="bookFrost" class="com.assignmentone.partone.two.byname.Book">
 		<constructor-arg value="16" type="Long"></constructor-arg>
 		<constructor-arg value="627472451" type="String"></constructor-arg>
-		<constructor-arg value="Shakespeare Poetry" type="String"></constructor-arg>
+		<constructor-arg value="Frost Poetry" type="String"></constructor-arg>
 		<constructor-arg value="12.34" type="Float"></constructor-arg>
 	</bean>
     
