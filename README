@@ -1,0 +1,35 @@
+*Assignment 1 part 1:
+Term-project:
+cd into this directory and execute the command to run the application: java -jar ./target/xml-category-injection.jar
+In the images directory, 1.part_one shows a screen shot of the anticpated result
+
+*Assignment 1 part 2
+Autowiring-by-constructor:
+cd into this directory and execute this command to run the application: java -jar ./target/category.jar
+In the images directory, 2.autowiring_by_constructor shows a screen shot of the anticpated result
+
+Autowiring-by-name:
+cd into this directory and execute this command to run the application: java -jar ./target/category.jar
+In the images directory, 2.autowiring_by_name shows a screen shot of the anticpated result
+
+Autowiring-by-type:
+cd into this directory and execute this command to run the application: java -jar ./target/category.jar
+In the images directory, 2.autowiring_by_type shows a screen shot of the anticpated result
+
+Autowiring-by-setter:
+cd into this directory and execute this command to run the application: java -jar ./target/autowiring-by-setter.jar
+In the images directory, 2.autowiring_by_setter shows a screen shot of the anticpated result
+
+*Assignment 1 part 3
+SpringAOP:
+BookBeforeAdvice:
+cd into SpringAOP directory and execute this command to run the application: java -jar ./target/book-before-advice.jar
+In the images directory, 3.book-before-advice shows a screen shot of the anticpated result
+
+BookAfterReturningAdvice:
+cd into SpringAOP directory and execute this command to run the application: java -jar ./target/book-after-returning-advice.jar
+In the images directory, 3.book-after-returning-advice shows a screen shot of the anticpated result
+
+BookThrowsAdvice:
+cd into SpringAOP directory and execute this command to run the application: java -jar ./target/book-throws-advice.jar
+In the images directory, 3.book-throws-advice shows a screen shot of the anticpated result
