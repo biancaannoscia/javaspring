@@ -13,7 +13,11 @@
 		<constructor-arg value="12.34" type="Float"></constructor-arg>
 	</bean>
     
-    
+<!-- This bean specifies  class="com.assignmentone.partone.two.byname.Category 
+	which means we will be analyzing Category.java. Since we specify autowire="byName",
+	then we will be searching this class for any properties that have names matching the bean ids
+	of beans within this file. So if Category.java has a property named bookFrost, then the bean above
+	will get injected into that property -->       
     <bean id="targetByName" autowire="byName" class="com.assignmentone.partone.two.byname.Category"
         lazy-init="true"
        />
