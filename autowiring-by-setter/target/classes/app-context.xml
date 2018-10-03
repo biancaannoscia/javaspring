@@ -8,6 +8,10 @@
           http://www.springframework.org/schema/context 
           http://www.springframework.org/schema/context/spring-context.xsd">
 
+
+<!-- The package name is given here, so all classes in this package will be analyzed
+	This includes Category.java and Book.java. Since both of these contain @Service
+	annotations, the application knows these are injectible beans -->
     <context:component-scan 
           base-package="com.assignmentone.partone.two.bysetter"/>
 </beans>
