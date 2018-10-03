@@ -5,7 +5,8 @@
     xmlns:p="http://www.springframework.org/schema/p"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+
+<!-- This bean is populated using constructor injection -->	
 	<bean id="bookPushkin" class="com.assignmentone.partone.two.byconstructor.Book">
 		<constructor-arg value="17" type="Long"></constructor-arg>
 		<constructor-arg value="121212454" type="String"></constructor-arg>
@@ -13,7 +14,9 @@
 		<constructor-arg value="11.27" type="Float"></constructor-arg>
 	</bean>
     
-       
+<!-- The constructor for Category class specified in the class field below is called. It will get 
+populated with the Book bean created above, since bean id = "bookPushkin" and the Category class
+has a field called bookPushkin.  -->       
       <bean id="targetConstructor" autowire="constructor" 
         class="com.assignmentone.partone.two.byconstructor.Category" lazy-init="true"/>
 

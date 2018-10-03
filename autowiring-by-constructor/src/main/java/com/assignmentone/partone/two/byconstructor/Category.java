@@ -13,11 +13,13 @@ public class Category {
 	private String name = "Poetry"; 
 	private static Book bookPushkin;
 	
+	//when targetConstructor bean is grabbed from the xml properties file, this constructor will get called,
+	//and if there is a bean with bean id = 'bookPushkin' in the file, it will get injected here
 	public Category(Book bookPushkin) {
         this.bookPushkin = bookPushkin;
     }
 	
-	
+	//xml configuration was used here	
 	public static void main(String... args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:app-context.xml");
