@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
         
 
-<!----- This book bean uses the predefined values in Book.java ----->
+<!-- This book bean uses the predefined values in Book.java -->
 	<bean id="book" class="com.partone.assignmentone.Book" />
 
 <!--  This book bean uses constructor injection  -->
