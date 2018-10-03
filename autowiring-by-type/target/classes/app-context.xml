@@ -13,7 +13,8 @@
 		<constructor-arg value="22.19" type="Float"></constructor-arg>
 	</bean>
     
-       
+<!-- byType injection works similar to constructor except that it uses setters instead of constructors
+	to perform the injection -->       
       <bean id="targetByType" autowire="byType" class="com.assignmentone.partone.two.bytype.Category"
         lazy-init="true"/>
 
