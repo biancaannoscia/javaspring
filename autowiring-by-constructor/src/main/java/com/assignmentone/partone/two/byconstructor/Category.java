@@ -13,8 +13,9 @@ public class Category {
 	private String name = "Poetry"; 
 	private static Book bookPushkin;
 	
-	//when targetConstructor bean is grabbed from the xml properties file, this constructor will get called,
-	//and if there is a bean with bean id = 'bookPushkin' in the file, it will get injected here
+	//when targetConstructor bean is grabbed from the xml properties file, this class will be analyzed for
+	//constructors. Since this constructor has 1 argument of type Book, and a bean of type Book
+	//exists in my ApplicationContext.xml, that bean will get injected here
 	public Category(Book bookPushkin) {
         this.bookPushkin = bookPushkin;
     }

@@ -14,9 +14,9 @@
 		<constructor-arg value="11.27" type="Float"></constructor-arg>
 	</bean>
     
-<!-- The constructor for Category class specified in the class field below is called. It will get 
-populated with the Book bean created above, since bean id = "bookPushkin" and the Category class
-has a field called bookPushkin.  -->       
+<!-- When this bean is created, Category.java class will be analyzed (since that is
+	the class specified below) and since we specify 
+	autowire="constructor", then constructors will be searched for in this class   -->       
       <bean id="targetConstructor" autowire="constructor" 
         class="com.assignmentone.partone.two.byconstructor.Category" lazy-init="true"/>
 
