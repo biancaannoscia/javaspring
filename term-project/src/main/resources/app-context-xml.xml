@@ -5,16 +5,20 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
 
+<!----- This book bean uses the predefined values in Book.java ----->
 	<bean id="book" class="com.partone.assignmentone.Book" />
 
+<!--  This book bean uses constructor injection  -->
 	<bean id="book2" class="com.partone.assignmentone.Book">
 		<constructor-arg value="5" type="Long"></constructor-arg>
 		<constructor-arg value="987654321" type="String"></constructor-arg>
 		<constructor-arg value="Frankenstein" type="String"></constructor-arg>
 		<constructor-arg value="20.00" type="Float"></constructor-arg>
 	</bean>
-	
+
+<!--  This book bean is directly created here -->	
 	<bean id="book3" class="com.partone.assignmentone.Book">
 		<property name="id" value="5"/>
 		<property name="isbn" value="976452846"/>
@@ -22,6 +26,7 @@
 		<property name="price" value="12.00"/>
 	</bean>
 
+<!--  This category bean populates the Map field with book3 and book2 -->
 	<bean id="categoryMap" class="com.partone.assignmentone.Category">
 		<property name="booksMap">
 			<map>
@@ -31,6 +36,7 @@
 		</property>
 	</bean>
 
+<!--  This category bean populates the Set field with book and book3 -->
 	<bean id="categorySet" class="com.partone.assignmentone.Category">
 		<property name="booksSet">
 			<set>
@@ -40,6 +46,8 @@
 		</property>
 	</bean>
 
+<!--  This category bean populates the List field with book2 through setter injection, and
+	  then within the java code a second Book object is inserted into the List -->
 	<bean id="categoryList" class="com.partone.assignmentone.Category"
 		p:booksList-ref="book2">
 	</bean>
