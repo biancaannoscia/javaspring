@@ -1,22 +1,24 @@
 package com.assignment2.part1.jdbc.domain;
 
+import java.math.BigDecimal;
+
 public class Book {
-	private int id;
-	private int category_id;
+	private long id;
+	private long category_id;
 	private String isbn;
 	private String title;
-	private float price;
+	private BigDecimal price;
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
-	public int getCategory_id() {
+	public long getCategory_id() {
 		return category_id;
 	}
-	public void setCategory_id(int category_id) {
+	public void setCategory_id(long category_id) {
 		this.category_id = category_id;
 	}
 	public String getIsbn() {
@@ -31,11 +33,15 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public float getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+	
+	public String toString() {
+		return "Book - Id: " + id + ", Category ID: " + category_id + ", ISBN: " + isbn + ", Title: " + title + ", Price: " + price;
 	}
 
 }
