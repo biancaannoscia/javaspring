@@ -11,9 +11,9 @@ import com.assignment2.part1.jdbc.domain.Category;
 
 
 //implementing find all categories
-public class FindAllCategoriedApp {
+public class FindAllCategoriesApp {
 	private static Logger logger = LoggerFactory.getLogger(
-			FindAllCategoriedApp.class);
+			FindAllCategoriesApp.class);
 
 	public static void main(String[] args) {
 		//here we are using xml configuration to inject the dataSource into BookCategoryDaoImpl

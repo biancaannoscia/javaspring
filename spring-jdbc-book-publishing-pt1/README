@@ -1,0 +1,88 @@
+Assignment2 Part1
+
+The main directory for this is spring-jdbc-book-publishing-pt1. 
+
+The Application Context file is found within spring-jdbc-book-publishing-pt1/src/main/resources/spring/app-context-xml.xml
+
+ddl.sql, shcema.sql and test-data.sql are all found here: 
+pring-jdbc-book-publishing-pt1/src/main/resources/sql
+images/tables_view displays my Category and Book table content
+
+Once the database is set up, we can move onto the application itself.
+
+The app directory below contains my main test driver classes
+spring-jdbc-book-publishing-pt1/src/main/java/com/assignment2/part1/jdbc/app
+
+The crud directory below hosts classes that describe different operation that the
+application is required to implement
+spring-jdbc-book-publishing-pt1/src/main/java/com/assignment2/part1/jdbc/crud
+
+The dao directory below contains an interface describing the application
+functionality and its implementation
+spring-jdbc-book-publishing-pt1/src/main/java/com/assignment2/part1/jdbc/dao
+BookCategoryDaoImpl.java is my DAO class here. It contains my datasource as well as 
+calls to each of the classes under the crud directory that will execute the different 
+application implementations
+
+The domain directory below contains my Category and Book beans 
+spring-jdbc-book-publishing-pt1/src/main/java/com/assignment2/part1/jdbc/domain
+
+
+
+Find All Categories implementation:
+extends MappingSqlQuery
+app/FindAllCategoriesApp.java is the main driver class.
+crud/FindAllCategories.java  is where we query the database for all rows in the category table
+cd into spring-jdbc-book-publishing-pt1 and run: mvn clean install
+once this is done, run: java -jar ./target/spring-jdbc-datasources.jar
+images/1.find_all_categories should show you the result of running this
+
+
+Find All Books implementation:
+extends MappingSqlQuery
+app/FindAllBooksApp.java is the main driver class.
+crud/FindAllBooks.java  is where we query the database for all rows in the book table
+cd into spring-jdbc-book-publishing-pt1 and run: mvn clean install
+once this is done, run: java -jar ./target/spring-jdbc-findallbooks.jar
+images/1.find_all_books should show you the result of running this
+
+Select All Books By Category name implementation:
+extends MappingSqlQuery
+app/SelectBooksByCategoryNameApp.java is the main driver class.
+crud/SelectBooksByCategoryName.java  is where we query the database for all rows in the book table that match a certain category name. For this example, I selected the category name "Fantasy"
+cd into spring-jdbc-book-publishing-pt1 and run: mvn clean install
+once this is done, run: java -jar ./target/spring-jdbc-SelectBooksByCategoryName.jar
+images/1.SelectBooksByCategoryName should show you the result of running this
+
+
+Insert Book with Existing Category ID implementation:
+extends SqlUpdate
+app/InsertBookApp.java is the main driver class.
+crud/InsertBook.java  is where we insert the new row into the Book table
+cd into spring-jdbc-book-publishing-pt1 and run: mvn clean install
+once this is done, run: java -jar ./target/spring-jdbc-insertBook.jar
+images/1.insert-book should show you the updated Book table with the new book "Twilight" under
+existing Category "Romance" added
+
+Delete Book implementation:
+extends SqlUpdate
+app/DeleteBookApp.java is the main driver class.
+crud/DeleteBook.java  is where we delete book with ID = 2 from the table
+cd into spring-jdbc-book-publishing-pt1 and run: mvn clean install
+once this is done, run: java -jar ./target/spring-jdbc-deleteBook.jar
+images/1.delete-book should show you the updated Book table with book with ID = 2 (and title = "The Holy Bible") removed from the table
+
+Update Book implementation:
+uses JdbcTemplate
+app/UpdateBookApp.java is the main driver class.
+crud/UpdateBook.java  is where we delete book with ID = 2 from the table
+cd into spring-jdbc-book-publishing-pt1 and run: mvn clean install
+once this is done, run: java -jar ./target/spring-jdbc-updateBook.jar
+images/1.update-book should show you the updated Book table with book with ID = 8 (and title = "Walt Disney") updated to title = "kurt Vonnegut"
+
+
+
+
+
+
+
