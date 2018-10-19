@@ -53,23 +53,4 @@ public class Category extends AbstractEntity {
 		return String.format("Category - id: %d, Name: %s", id, name);
 	}
 
-//	@Override public boolean equals(Object o) {
-//		if (this == o)
-//			return true;
-//		if (o == null || getClass() != o.getClass())
-//			return false;
-//		if (!super.equals(o))
-//			return false;
-//		Album album = (Album) o;
-//		if (title != null ? !title.equals(album.title) : album.title != null)
-//			return false;
-//		return releaseDate != null ? releaseDate.equals(album.releaseDate) : album.releaseDate == null;
-//	}
-//
-//	@Override public int hashCode() {
-//		int result = super.hashCode();
-//		result = 31 * result + (title != null ? title.hashCode() : 0);
-//		result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);
-//		return result;
-//	}
 }
