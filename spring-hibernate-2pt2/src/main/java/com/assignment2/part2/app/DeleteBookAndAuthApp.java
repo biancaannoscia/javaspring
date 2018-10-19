@@ -19,14 +19,17 @@ public class DeleteBookAndAuthApp {
 			DeleteBookAndAuthApp.class);
 
 	public static void main(String[] args) {
+		//load config file
 		GenericApplicationContext ctx = 
 				new AnnotationConfigApplicationContext(AppConfig.class);
 		BookDao bookDao = ctx.getBean(BookDao.class);
 		
-		Long idDelete = 23L;
+		//delete book we previously inserted
+		Long idDelete = 7L;
 		Book bookDelete = bookDao.findBookWithCatAuthByBookID(idDelete);
 		bookDao.delete(bookDelete);
 		
+		//display info
 		logger.info("============== DELETED new book (of mice and men) and authors (william golding and walt disney) ==============");
 		List<Book> booksAll = bookDao.findAllWithCatAuth();
 		listBooks(booksAll);
