@@ -30,7 +30,6 @@ public class InsertBookWithNewAuthApp {
 		category.setName("Fantasy");
 		category.setId(2L);
 		
-		//create set of authors
 		
 		//create new Author object and add to set
 		Author author = new Author();
@@ -48,7 +47,7 @@ public class InsertBookWithNewAuthApp {
 		
 		bookDao.saveWithNewAuth(book);
 		
-		logger.info("============== Find all books with new book (of mice and men) and authors (william golding and walt disney) ==============");
+		logger.info("============== Find all books with new book (of mice and men) and authors  ==============");
 		List<Book> booksAll = bookDao.findAllWithCatAuth();
 		listBooks(booksAll);
 		logger.info("============== Find all books with new book and authors ==============");
