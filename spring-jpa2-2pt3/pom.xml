@@ -76,7 +76,7 @@
 		<executions>
 			<execution>
 				<phase>package</phase>
-				<id>find-all-demo</id>
+				<id>find-all</id>
 				<goals>
 					<goal>shade</goal>
 				</goals>
@@ -90,10 +90,98 @@
 						</transformer>
 						<transformer
 							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-							<mainClass>com.apress.prospring5.ch8.FindAllDemo</mainClass>
+							<mainClass>com.assignment3.part3.jpa2.app.FindAllApp</mainClass>
 						</transformer>
 					</transformers>
-					<finalName>find-all-demo</finalName>
+					<finalName>find-all</finalName>
+				</configuration>
+			  </execution>
+			  <execution>
+				<phase>package</phase>
+				<id>find-all-by-native-query</id>
+				<goals>
+					<goal>shade</goal>
+				</goals>
+				<configuration>
+					<transformers>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.handlers</resource>
+						</transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.schemas</resource>
+						</transformer>
+						<transformer
+							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							<mainClass>com.assignment3.part3.jpa2.app.FindAllByNativeQueryApp</mainClass>
+						</transformer>
+					</transformers>
+					<finalName>find-all-by-native-query</finalName>
+				</configuration>
+			  </execution>
+			  <execution>
+				<phase>package</phase>
+				<id>find-all-with-cat-auth</id>
+				<goals>
+					<goal>shade</goal>
+				</goals>
+				<configuration>
+					<transformers>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.handlers</resource>
+						</transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.schemas</resource>
+						</transformer>
+						<transformer
+							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							<mainClass>com.assignment3.part3.jpa2.app.FindAllWithCatAuthApp</mainClass>
+						</transformer>
+					</transformers>
+					<finalName>find-all-with-cat-auth</finalName>
+				</configuration>
+			  </execution>
+			  <execution>
+				<phase>package</phase>
+				<id>find-by-auth-id</id>
+				<goals>
+					<goal>shade</goal>
+				</goals>
+				<configuration>
+					<transformers>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.handlers</resource>
+						</transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.schemas</resource>
+						</transformer>
+						<transformer
+							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							<mainClass>com.assignment3.part3.jpa2.app.FindByAuthIdApp</mainClass>
+						</transformer>
+					</transformers>
+					<finalName>find-by-auth-id</finalName>
+				</configuration>
+			  </execution>
+			  <execution>
+				<phase>package</phase>
+				<id>save-app</id>
+				<goals>
+					<goal>shade</goal>
+				</goals>
+				<configuration>
+					<transformers>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.handlers</resource>
+						</transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.schemas</resource>
+						</transformer>
+						<transformer
+							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							<mainClass>com.assignment3.part3.jpa2.app.SaveWithNewAuthApp</mainClass>
+						</transformer>
+					</transformers>
+					<finalName>save-app</finalName>
 				</configuration>
 			  </execution>
 		</executions>		  

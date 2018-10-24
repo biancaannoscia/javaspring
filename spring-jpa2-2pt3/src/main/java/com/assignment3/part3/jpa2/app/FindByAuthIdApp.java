@@ -9,26 +9,27 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import com.assignment3.part3.jpa2.app.domain.Book;
 import com.assignment3.part3.jpa2.app.service.PublishingService;
 
-public class FindAllWithCatAuthApp {
 
-private static Logger logger = LoggerFactory.getLogger(FindAllWithCatAuthApp.class);
+public class FindByAuthIdApp {
+private static Logger logger = LoggerFactory.getLogger(FindAllApp.class);
 	
     public static void main(String... args) {
-        GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
+    	GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:spring/app-context-annotation.xml");
         ctx.refresh();
 
         PublishingService publishingService = ctx.getBean(PublishingService.class);
-        
-        logger.info("============== Find all books start ==============");
-        List<Book> books = publishingService.findAllWithCatAuth();
-        listBooks(books);
-        logger.info("============== Find all books end ==============");
 		
-        ctx.close();
-    }
-    
-    private static void listBooks(List<Book> books) {
+		logger.info("============== Listing Books by Author ID ==============");
+		Long idFind = 2L;
+		List<Book> booksAll = publishingService.findAllWithCatAuthMultBookPerAuthId(idFind);
+		listBooks(booksAll);
+		logger.info("============== Listing Books byAuthor ID ==============");
+		
+		ctx.close();
+	}
+	
+	private static void listBooks(List<Book> books) {
 		logger.info(" ---- Listing books with authors:");
 		books.forEach(b -> {
 			logger.info(b.toString());

@@ -6,12 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import com.assignment3.part3.jpa2.app.DeleteApp;
+import com.assignment3.part3.jpa2.app.FindAllApp;
 import com.assignment3.part3.jpa2.app.domain.Book;
 import com.assignment3.part3.jpa2.app.service.PublishingService;
 
-public class FindAllApp {
+public class FindAllByNativeQueryApp {
 
-private static Logger logger = LoggerFactory.getLogger(FindAllApp.class);
+private static Logger logger = LoggerFactory.getLogger(FindAllByNativeQueryApp.class);
 	
     public static void main(String... args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
@@ -20,10 +22,10 @@ private static Logger logger = LoggerFactory.getLogger(FindAllApp.class);
 
         PublishingService publishingService = ctx.getBean(PublishingService.class);
         
-        logger.info("============== Find all books start ==============");
-        List<Book> books = publishingService.findAllWithoutCatAuth();
+        logger.info("============== Find all books by native query start ==============");
+        List<Book> books = publishingService.findAllByNativeQuery();
         listBooks(books);
-        logger.info("============== Find all books end ==============");
+        logger.info("============== Find all books by native query end ==============");
 		
         ctx.close();
     }

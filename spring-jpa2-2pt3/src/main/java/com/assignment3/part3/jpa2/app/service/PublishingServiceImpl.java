@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,8 @@ import com.assignment3.part3.jpa2.app.domain.Book;
 @SuppressWarnings("unchecked")
 public class PublishingServiceImpl implements PublishingService{
 	private static Logger logger = LoggerFactory.getLogger(PublishingServiceImpl.class);
+	final static String ALL_BOOK_NATIVE_QUERY =
+	        "select * from book";
 
 
     @PersistenceContext
@@ -42,13 +45,24 @@ public class PublishingServiceImpl implements PublishingService{
 	}
 
 	public List<Book> findAllWithCatAuthMultBookPerAuthId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Book> query = em.createNamedQuery(Book.FIND_BOOK_WITH_AUTHOR_WITH_MULT_BOOKS, 
+				Book.class);
+		query.setParameter("id", id);
+        return query.getResultList();
 	}
 
 	public Book saveWithNewAuth(Book book) {
-		// TODO Auto-generated method stub
-		return null;
+		if (book.getId() == null) {
+            logger.info("Inserting new book");
+            em.persist(book);
+        } else {
+            em.merge(book);
+            logger.info("Updating existing book");
+        }
+
+        logger.info("Book saved with id: " + book.getId());
+
+        return book;
 	}
 
 	public void delete(Book book) {
@@ -56,9 +70,9 @@ public class PublishingServiceImpl implements PublishingService{
 		
 	}
 
+	@Transactional(readOnly=true)
 	public List<Book> findAllByNativeQuery() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createNativeQuery(ALL_BOOK_NATIVE_QUERY, "bookResult").getResultList();
 	}
 
 }

@@ -18,11 +18,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 				query="select distinct b from Book b " +
 						"left join fetch b.authors a " +
 						"left join fetch b.category c"),
-		@NamedQuery(name=Book.FIND_BOOK_WITH_AUTHOR_AND_CATEGORIES_BY_ID,
-				query="select distinct b from Book b " +
-						"left join fetch b.authors a " +
-						"left join fetch b.category c " +
-						"where b.id = :id"),
 		@NamedQuery(name=Book.FIND_BOOK_WITH_AUTHOR_WITH_MULT_BOOKS,
 				query="select distinct b from Book b " +
 						"left join fetch b.authors a " +
@@ -30,19 +25,25 @@ import static javax.persistence.GenerationType.IDENTITY;
 						"where a.id = :id")
 		
 })
+@SqlResultSetMapping(
+	     name="bookResult",
+	     entities=@EntityResult(entityClass=Book.class)
+	)
 
-public class Book extends AbstractEntity {
+public class Book  {
 
 
 	public static final String FIND_BOOK_WITH_AUTHOR_AND_CATEGORIES = 
 			"Book.findBookWithAuthorAndCategories";
-	public static final String FIND_BOOK_WITH_AUTHOR_AND_CATEGORIES_BY_ID = 
-			"Book.findBookWithAuthorAndCategoriesByID";
 	public static final String FIND_BOOK_WITH_AUTHOR_WITH_MULT_BOOKS = 
 			"Book.findBookWithAuthorWithMultBooks";
 	public static final String FIND_ALL = "Book.findAll";
 
-
+	@Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "ID")
+	protected Long id;
+	
 	@Column(name = "ISBN")
 	private String isbn;
 	
@@ -64,7 +65,7 @@ public class Book extends AbstractEntity {
 	//many books can map to one author, and many authors can map to one book. 
 	//Thus, there is a many-to-many relationship between the two tables
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "author_book",
 			//this describes foreign key TO the book table
 			joinColumns = @JoinColumn(name = "BOOK_ID"),
@@ -74,6 +75,13 @@ public class Book extends AbstractEntity {
 
 
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getIsbn() {
 		return isbn;
