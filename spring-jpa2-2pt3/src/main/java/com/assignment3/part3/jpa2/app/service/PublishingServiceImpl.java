@@ -5,6 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.assignment3.part3.jpa2.app.domain.Book;
+import com.assignment3.part3.jpa2.app.domain.Book_;
 
 @Service("jpaPublishingsService")
 @Repository
@@ -39,9 +47,23 @@ public class PublishingServiceImpl implements PublishingService{
         return books;
 	}
 
+    @Transactional(readOnly=true)
 	public Book findBookWithCatAuthByBookID(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+    	//borrowed this from lecture material
+    	CriteriaBuilder cb = em.getCriteriaBuilder();
+    	CriteriaQuery<Book> criteriaQuery = cb.createQuery(Book.class);
+    	Root<Book> bookRoot = criteriaQuery.from(Book.class);
+    	bookRoot.fetch(Book_.authors, JoinType.LEFT);
+    	bookRoot.fetch(Book_.category, JoinType.LEFT);
+    	criteriaQuery.select(bookRoot).distinct(true);
+    	Predicate criteria = cb.conjunction();
+    	if (id != null) {
+            Predicate p = cb.equal(bookRoot.get(Book_.id), 
+                id);
+             criteria = cb.and(criteria, p);
+        }
+    	criteriaQuery.where(criteria);
+    	return em.createQuery(criteriaQuery).getSingleResult();
 	}
 
 	public List<Book> findAllWithCatAuthMultBookPerAuthId(Long id) {
@@ -65,8 +87,23 @@ public class PublishingServiceImpl implements PublishingService{
         return book;
 	}
 
-	public void delete(Book book) {
-		// TODO Auto-generated method stub
+	public void delete(Long idBook) {
+		//Get instance of criteria builder
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		
+		//create the cirteria delete object
+    	CriteriaDelete<Book> delete = cb.createCriteriaDelete(Book.class);
+    	
+    	//Set Book as the root class where we want to delete from
+    	Root e = delete.from(Book.class);
+    	
+    	//where clause
+    	delete.where(cb.equal(e.get("id"), idBook));
+    	
+    	em.createQuery(delete).executeUpdate();
+    	
+    	
+    	
 		
 	}
 

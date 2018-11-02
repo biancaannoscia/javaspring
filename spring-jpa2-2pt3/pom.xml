@@ -14,6 +14,8 @@
     <mysql.client.version>5.1.29</mysql.client.version>
 	<hibernate.entitymanager.version>5.2.12.Final</hibernate.entitymanager.version>
 	<spring.orm.version>5.0.2.RELEASE</spring.orm.version>
+	<hibernate.jpamodelgen.version>5.2.12.Final</hibernate.jpamodelgen.version>
+	<maven.processor.plugin>3.3.2</maven.processor.plugin>
   </properties>
   
   <dependencies>
@@ -21,16 +23,6 @@
           <groupId>org.springframework</groupId>
           <artifactId>spring-context</artifactId>
           <version>${spring.version}</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-jdbc</artifactId>
-          <version>${spring.version}</version>
-      </dependency>
-      <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-          <version>${junit.version}</version>
       </dependency>
       <dependency>
           <groupId>org.slf4j</groupId>
@@ -184,8 +176,78 @@
 					<finalName>save-app</finalName>
 				</configuration>
 			  </execution>
+			  <execution>
+				<phase>package</phase>
+				<id>find-by-id</id>
+				<goals>
+					<goal>shade</goal>
+				</goals>
+				<configuration>
+					<transformers>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.handlers</resource>
+						</transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.schemas</resource>
+						</transformer>
+						<transformer
+							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							<mainClass>com.assignment3.part3.jpa2.app.FindBookByBookIDApp</mainClass>
+						</transformer>
+					</transformers>
+					<finalName>find-by-id</finalName>
+				</configuration>
+			  </execution>
+			  <execution>
+				<phase>package</phase>
+				<id>delete-book</id>
+				<goals>
+					<goal>shade</goal>
+				</goals>
+				<configuration>
+					<transformers>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.handlers</resource>
+						</transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+							<resource>META-INF/spring.schemas</resource>
+						</transformer>
+						<transformer
+							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							<mainClass>com.assignment3.part3.jpa2.app.DeleteApp</mainClass>
+						</transformer>
+					</transformers>
+					<finalName>delete-book</finalName>
+				</configuration>
+			  </execution>
 		</executions>		  
 	  </plugin>
+	  <plugin>
+          <groupId>org.bsc.maven</groupId>
+          <artifactId>maven-processor-plugin</artifactId>
+          <version>${maven.processor.plugin}</version>
+          <executions>
+              <execution>
+                  <id>process</id>
+                  <goals>
+                      <goal>process</goal>
+                  </goals>
+                  <phase>generate-sources</phase>
+                  <configuration>
+                      <processors>                                
+                          <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+                      </processors>
+                  </configuration>
+              </execution>
+          </executions>
+          <dependencies>
+              <dependency>
+                  <groupId>org.hibernate</groupId>
+                  <artifactId>hibernate-jpamodelgen</artifactId>
+                  <version>${hibernate.jpamodelgen.version}</version>
+              </dependency>
+          </dependencies>
+      </plugin>
     </plugins>
   </build>  
 </project>

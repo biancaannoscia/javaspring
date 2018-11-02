@@ -7,7 +7,7 @@ The main directory for this is spring-jpa2-2pt3.
 
 The Configuration file is located in: spring-jpa2-2pt3/src/main/resources/spring/app-context-annotation.xml
 
-ddl.sql, shcema.sql and test-data.sql are all the same from the par2 project, so they are not included here, you can use the same schema as before
+ddl.sql, shcema.sql and test-data.sql are all the same from the part2 project, so they are not included here, you can use the same schema as before
 
 images/3.table_view displays my Category, Book, Author and Author_Book table content
 
@@ -40,14 +40,13 @@ cd into spring-jpa2-2pt3 and run: mvn clean install
 once this is done, run: java -jar ./target/find-all-with-cat-auth.jar
 images/3.find-all-with-authors-and-categories should show you the result of running this
 
-/***find a book with authors and category by book's ID:
-developed with getNamedQuery(…) with parameter(s)
-app/FindBookWithCatAndAuthApp.java is the main driver class. I chose book ID = 1 as the argument to pass in, which is Romeo and Juliet
-dao/BookCategoryDaoImpl.findBookWithAuthorAndCategoriesByID() is the method responsible
-domain/Book.java hosts the query that grabs the data
+find a book with authors and category by book's ID:
+developed with  JPA 2 Criteria API
+app/FindBookByBookIDApp.java is the main driver class. I chose book ID = 1 as the argument to pass in, which is Romeo and Juliet
+service/PublishingServiceImpl.findBookWithCatAuthByBookID() is the method responsible
 cd into spring-jpa2-2pt3 and run: mvn clean install
-once this is done, run: java -jar ./target/find-book-with-cat-auth.jar
-images/2.find-book-with-authors-and-categories should show you the result of running this****/
+once this is done, run: java -jar ./target/find-by-id.jar
+images/3.find-book-with-authors-and-categories should show you the result of running this
 
 find all books by author id
 developed with @NamedQuery
@@ -61,19 +60,19 @@ images/3.find-book-by-auth-id should show you the result of running this
 Create a new book with a new author(s) not persisted yet in your database. 
 developed using JPA2
 InsertBookWithNewAuthApp.java is the main driver class
-service/PublishingServiceImpl.SaveWithNewAuthApp() is the method responsible
+service/PublishingServiceImpl.saveWithNewAuthApp() is the method responsible
 cd into spring-jpa2-2pt3 and run: mvn clean install
 once this is done, run: java -jar ./target/save-app.jar
 images/3.insert-book should show you the result of running this, you can see the new book "of mice and men" and new author "john steinbeck" listed
 images/3.tables-after-insert shows you the tables after the new book and author have been inserted
 
-/******Delete the saved book and author(s) from the database
-DeleteBookAndAuthApp.java is the main driver class
-dao/BookCategoryDaoImpl.Delete() is the method responsible
+Delete the saved book and author(s) from the database
+DeleteApp.java is the main driver class
+service/PublishingServiceImpl.delete() is the method responsible
 cd into spring-jpa2-2pt3 and run: mvn clean install
 once this is done, run: java -jar ./target/delete-book.jar
-images/2.delete should show you the result of running this, as you can see, the new book "of mice and men" and new author "john steinbeck" is no longer listed. Note: you may need to change the book id passed in the main class to make sure the correct book is deleted, but it should already be set up properly
-images/2.tables-after-delete shows the tables after the new book and author have been deleted*****/
+images/3.delete should show you the result of running this, as you can see, the new book "of mice and men" and new author "john steinbeck" is no longer listed. Note: you may need to change the book id passed in the main class to make sure the correct book is deleted, but it should already be set up properly
+images/3.tables-after-delete shows the tables after the new book and author have been deleted
 
 find all books without authors and categories:
 developed using Native Query
