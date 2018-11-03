@@ -3,6 +3,7 @@ package com.assignment3.part3.jpa2.app.service;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -87,24 +88,10 @@ public class PublishingServiceImpl implements PublishingService{
         return book;
 	}
 
-	public void delete(Long idBook) {
-		//Get instance of criteria builder
-		CriteriaBuilder cb = em.getCriteriaBuilder();
-		
-		//create the cirteria delete object
-    	CriteriaDelete<Book> delete = cb.createCriteriaDelete(Book.class);
-    	
-    	//Set Book as the root class where we want to delete from
-    	Root e = delete.from(Book.class);
-    	
-    	//where clause
-    	delete.where(cb.equal(e.get("id"), idBook));
-    	
-    	em.createQuery(delete).executeUpdate();
-    	
-    	
-    	
-		
+	public void delete(Book book) {
+		Book b1 = em.find(Book.class,book.getId());
+        em.remove(b1);
+
 	}
 
 	@Transactional(readOnly=true)

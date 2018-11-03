@@ -15,7 +15,7 @@ public interface PublishingService {
 	
 	Book saveWithNewAuth(Book book);
 	
-	void delete(Long idBookbook);
+	void delete(Book book);
 	
 	List<Book> findAllByNativeQuery();
 

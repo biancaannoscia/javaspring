@@ -2,6 +2,9 @@ package com.assignment3.part3.jpa2.app.domain;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
@@ -72,6 +75,9 @@ public class Book  {
 			//this describes the foreign key from the book table to the author table
 			inverseJoinColumns = @JoinColumn(name = "AUTHOR_ID"))
 	private Set<Author> authors = new HashSet<Author>();
+	
+
+	
 
 
 	

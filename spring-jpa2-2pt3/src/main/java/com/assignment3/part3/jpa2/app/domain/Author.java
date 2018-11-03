@@ -24,7 +24,7 @@ public class Author extends AbstractEntity {
 			joinColumns = @JoinColumn(name = "AUTHOR_ID"),
 			// this describes the foreign key from the author table to the book table
 			inverseJoinColumns = @JoinColumn(name = "BOOK_ID"))
-	private Set<Author> authors = new HashSet<Author>();
+	private Set<Book> books = new HashSet<Book>();
 
 
 	public String getFirstName() {
@@ -51,12 +51,12 @@ public class Author extends AbstractEntity {
 		this.description = description;
 	}
 
-	public Set<Author> getAuthors() {
-		return authors;
+	public Set<Book> getBooks() {
+		return books;
 	}
 
-	public void setAuthors(Set<Author> authors) {
-		this.authors = authors;
+	public void setAuthors(Set<Book> books) {
+		this.books = books;
 	}
 
 	@Override
