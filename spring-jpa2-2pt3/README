@@ -59,7 +59,7 @@ images/3.find-book-by-auth-id should show you the result of running this
 
 Create a new book with a new author(s) not persisted yet in your database. 
 developed using JPA2
-InsertBookWithNewAuthApp.java is the main driver class
+app/SaveWithNewAuthApp.java is the main driver class
 service/PublishingServiceImpl.saveWithNewAuthApp() is the method responsible
 cd into spring-jpa2-2pt3 and run: mvn clean install
 once this is done, run: java -jar ./target/save-app.jar

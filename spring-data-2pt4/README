@@ -1,0 +1,60 @@
+
+Assignment2 Part3
+
+images/4.directory_structure shows my directory structure
+
+The main directory for this is spring-data-2pt4. 
+
+The Configuration file is located in: spring-data-2pt4/src/main/resources/spring/app-context-annotation.xml
+
+ddl.sql, shcema.sql and test-data.sql are all the same from the part2 project, so they are not included here, you can use the same schema as before
+
+images/4.table_view displays my Category, Book, Author and Author_Book table content
+
+The app directory below contains my main test driver classes
+spring-jpa2-2pt3/src/main/java/com/assignment3/part3/jpa2/app
+
+The service directory below contains an interface describing the application
+functionality and its implementation
+spring-jpa2-2pt3/src/main/java/com/assignment3/part3/jpa2/app/service
+
+The domain directory below contains my Author, Category and Book beans 
+spring-data-2pt4/src/main/java/com/assignment2/springdata/part4/app 
+
+My repository class is located:
+spring-data-2pt4/src/main/java/com/assignment2/springdata/part4/app/repository/BookRepository.java 
+
+
+Find all books without details 
+app/FindAllApp.java is the main driver class.
+service/BookServiceImpl.findAll() is the method responsible
+cd into spring-data-2pt4 and run: mvn clean install
+once this is done, run: java -jar ./target/find-all.jar
+images/4.find-all-books-without-authors-and-categories should show you the result of running this
+
+
+Find a book with author(s) and category by the book Id:
+app/FindBookByBookIDApp.java is the main driver class. I chose book ID = 1 as the argument to pass in, which is Romeo and Juliet
+service/BookServiceImpl.findById() is the method responsible
+cd into spring-data-2pt4 and run: mvn clean install
+once this is done, run: java -jar ./target/find-all-by-id.jar
+images/4.find-book-with-authors-and-categories should show you the result of running this
+
+
+Create a new book with a new author(s) not persisted yet in your database. 
+app/SaveWithNewAuthApp.java is the main driver class
+service/BookServiceImpl.save() is the method responsible
+cd into spring-data-2pt4 and run: mvn clean install
+once this is done, run: java -jar ./target/save.jar
+images/4.insert-book should show you the result of running this, you can see the new book "of mice and men" and new author "john steinbeck" listed
+images/4.tables-after-insert shows you the tables after the new book and author have been inserted
+
+Delete the saved book and author(s) from the database
+DeleteApp.java is the main driver class
+service/BookServiceImpl.delete() is the method responsible
+cd into spring-data-2pt4  and run: mvn clean install
+once this is done, run: java -jar ./target/delete.jar
+images/4.delete should show you the result of running this, as you can see, the new book "of mice and men" and new author "john steinbeck" is no longer listed. Note: you may need to change the book id passed in the main class to make sure the correct book is deleted, but it should already be set up properly
+images/4.tables-after-delete shows the tables after the new book and author have been deleted
+
+
