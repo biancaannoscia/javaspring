@@ -1,0 +1,12 @@
+insert into book (category_name, isbn, title, price) values ('Romance', '1234567899', 'Romeo and Juliet', 11.11);
+insert into book (category_name, isbn, title, price) values ('Fantasy', '9393847564', 'Harry Potter: And the Sorcerer Stone', 33.33);
+insert into book (category_name, isbn, title, price) values ('Fantasy', '4847362937', 'Harry Potter: And the Deathly Hallows', 44.44);
+insert into book (category_name, isbn, title, price) values ('Sci-Fi', '3839384736', 'Goose Girl', 55.55);
+insert into book (category_name, isbn, title, price) values ('Sci-Fi', '2839382736', 'Sirens of Titan', 77.77);
+insert into book (category_name, isbn, title, price) values ('Biography', '4902938293', 'Walt Disney Biography', 88.88);
+insert into book (category_name, isbn, title, price) values ('Travel', '1234567899', 'Map of China', 22.22);
+insert into book (category_name, isbn, title, price) values ('Holiday', '9393847564', 'Nutcracker', 99.99);
+insert into book (category_name, isbn, title, price) values ('Holiday', '4847362937', 'A Christmas Carol', 10.10);
+insert into book (category_name, isbn, title, price) values ('Sci-Fi', '3839384736', 'Star Wards', 12.12);
+insert into book (category_name, isbn, title, price) values ('Sci-Fi', '2839382736', 'Lord of the Rings', 13.13);
+insert into book (category_name, isbn, title, price) values ('Fiction', '4902938293', 'Animal Farm', 66.66);
