@@ -29,16 +29,15 @@ public class Book implements Serializable{
 	private String title;
 	
 	@NotBlank(message="{validation.publisher.NotBlank.message}")
-	@Size(min=2, max=200, message="{validation.publisher.Size.message}")
+	@Size(min=2, max=100, message="{validation.publisher.Size.message}")
 	@Column(name = "PUBLISHER")
 	private String publisher;
 	
 	@NotBlank(message="{validation.categoryname.NotBlank.message}")
-	@Size(min=2, max=200, message="{validation.categoryname.Size.message}")
+	@Size(min=2, max=100, message="{validation.categoryname.Size.message}")
 	@Column(name = "CATEGORY_NAME")
 	private String categoryName;
 	
-	@NotBlank(message="{validation.price.NotBlank.message}")
 	@Column(name = "PRICE")
 	private BigDecimal price;
 	

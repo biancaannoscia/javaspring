@@ -35,7 +35,7 @@
         <table>
             <tr>
                 <td>${labelBookCategoryName}</td>
-                <td>${book.categoryName}</td>
+                <td>${book.category_name}</td>
             </tr>
             <tr>
                 <td>${labelBookIsbn}</td>
@@ -43,23 +43,23 @@
             </tr>
             <tr>
                 <td>${labelBookTitle}</td>
-                <td><fmt:formatDate value="${book.title}"/></td>
+                <td>${book.title}</td>
             </tr>
             <tr>
                 <td>${labelBookPublisher}</td>
                 <td>${book.publisher}</td>
             </tr>
             <tr>
-                <td>${labelBookPrice"}</td>
+                <td>${labelBookPrice}</td>
                 <td>${book.price}</td>
             </tr>
 			
 			<!-- Teh new row is added to the table for displaying the photo by pointing to 
-				the URL for photo download. -->
-<%--             <tr>
+				the URL for photo download. 
+            <tr>
                 <td>${labelBookPhoto}</td>
                 <td><img src="${bookPhotoUrl}/${book.id}"></img></td>
-            </tr> --%>
+            </tr> -->
         </table>
 		
 		<a href="${editBookUrl}/${book.id}?form">${labelBookUpdate}</a>

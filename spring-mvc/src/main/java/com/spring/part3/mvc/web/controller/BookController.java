@@ -58,6 +58,68 @@ public class BookController {
         return "books/list";
     }
     
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String show(@PathVariable("id") Long id, Model uiModel) {
+        Book book = bookService.findById(id);
+        uiModel.addAttribute("book", book);
+
+        return "books/show";
+    }
+    
+    
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+    public String update(@Valid Book book, BindingResult bindingResult, Model uiModel,
+                         HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes,
+                         Locale locale) {
+        logger.info("Updating book");
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message("error",
+                    messageSource.getMessage("book_save_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("book", book);
+            return "books/update";
+        }
+        uiModel.asMap().clear();
+        //Note that we want to display the message after the redirect, so we need to use the 
+        //RedirectAttributes.addFlashAttribute() method for displaying the success message 
+        //in the show singer view. 
+        //The Message class is a custom class that stores the message retrieved from MessageSource 
+        //and the type of message (that is, success or error) for the view to display in the message area   
+        redirectAttributes.addFlashAttribute("message", new Message("success",
+                messageSource.getMessage("book_save_success", new Object[]{}, locale)));
+        bookService.save(book);
+        return "redirect:/books/" + UrlUtil.encodeUrlPathSegment(book.getId().toString(),
+                httpServletRequest);
+    }
+
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("book", bookService.findById(id));
+        return "books/update";
+    }
+    
+	//BindingResult used as an object to lookfor validation errors.
+    @RequestMapping(method = RequestMethod.POST)
+    public String create(@Valid Book Book, BindingResult bindingResult, Model uiModel, 
+		HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, 
+		Locale locale, @RequestParam(value="file", required=false) Part file) {
+        logger.info("Creating Book");
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message("error",
+                    messageSource.getMessage("Book_save_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("Book", Book);
+            return "Books/create";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message("success",
+                messageSource.getMessage("Book_save_success", new Object[]{}, locale)));
+
+        logger.info("Book id: " + Book.getId());
+
+        bookService.save(Book);
+        return "redirect:/books/";
+    }
+
+    
     @ResponseBody
     @RequestMapping(value = "/listgrid", method = RequestMethod.GET, produces="application/json")
     public BookGrid listGrid(@RequestParam(value = "page", required = false) Integer page,

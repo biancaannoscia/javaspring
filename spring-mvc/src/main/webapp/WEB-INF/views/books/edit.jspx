@@ -8,10 +8,10 @@
 
     <script type="text/javascript">
         $(function(){
-            $('#birthDate').datepicker({
+            /* $('#birthDate').datepicker({
                 dateFormat: 'yy-mm-dd',
                 changeYear: true
-            });
+            }); */
 
             $("#bookDescription").ckeditor(
                     {
@@ -49,12 +49,12 @@
                 <div id="message" class="${message.type}">${message.message}</div>
             </c:if>
 
-            <form:label path="categoryName">
+            <form:label path="category_name">
                 ${labelBookCategoryName}*
             </form:label>
-            <form:input path="categoryName" />
+            <form:input path="category_name" />
             <div>
-                <form:errors path="categoryName" cssClass="error" />
+                <form:errors path="category_name" cssClass="error" />
             </div>
             <p/>
 
@@ -94,32 +94,7 @@
             </div>
             <p/>
 
-<%--             <form:label path="birthDate">
-                ${labelBookBirthDate}
-            </form:label>
-            <form:input path="birthDate" id="birthDate"/>
-            <div>
-                <form:errors path="birthDate" cssClass="error" />
-            </div>
-            <p/>
 
-            <form:label path="description">
-                ${labelBookDescription}
-            </form:label>
-            <form:textarea cols="60" rows="8" path="description" id="bookDescription"/>
-            <div>
-                <form:errors path="description" cssClass="error" />
-            </div>
-            <p/> --%>
-
-<%-- 			<!-- The file upload field is added to the form. -->
-            <label for="file">
-                ${labelBookPhoto}
-            </label>
-            <input name="file" type="file"/>
-            <p/> --%>
-
-            <form:hidden path="version" />
 
             <button type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
                 <span class="ui-button-text">Save</span>
