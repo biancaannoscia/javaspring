@@ -29,12 +29,12 @@ public class Book implements Serializable{
 	private String title;
 	
 	@NotBlank(message="{validation.publisher.NotBlank.message}")
-	@Size(min=2, max=100, message="{validation.publisher.Size.message}")
+	@Size(min=2, max=200, message="{validation.publisher.Size.message}")
 	@Column(name = "PUBLISHER")
 	private String publisher;
 	
 	@NotBlank(message="{validation.categoryname.NotBlank.message}")
-	@Size(min=2, max=100, message="{validation.categoryname.Size.message}")
+	@Size(min=2, max=200, message="{validation.categoryname.Size.message}")
 	@Column(name = "CATEGORY_NAME")
 	private String categoryName;
 	
@@ -93,7 +93,7 @@ public class Book implements Serializable{
 	
 	public String toString() {
 		return "Book - id: " + id + ", Category Name: " + categoryName +", Title: " + title 
-				+ "Publisher: " + publisher + ", ISBN: " + isbn + ", PRICE: " + price;
+				+ ", Publisher: " + publisher + ", ISBN: " + isbn + ", PRICE: " + price;
 	}
 
 }

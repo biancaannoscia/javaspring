@@ -29,7 +29,7 @@
         <property name="entityManagerFactory" ref="emf"/>
     </bean>
     
-<!--      <tx:annotation-driven transaction-manager="transactionManager" /> -->
+      <tx:annotation-driven transaction-manager="transactionManager" /> 
 
     <tx:annotation-driven/>
 
@@ -52,7 +52,7 @@
 
     <context:annotation-config/>
     
-<!--          <context:component-scan base-package="com.spring.part3.mvc" /> -->
+         <context:component-scan base-package="com.spring.part3.mvc" /> 
 
     <jpa:repositories base-package="com.spring.part3.mvc.repository"
                       entity-manager-factory-ref="emf"

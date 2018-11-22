@@ -30,7 +30,7 @@
                 colNames:['${labelBookCategoryName}', '${labelBookIsbn}',
                     '${labelBookTitle}', '${labelBookPublisher}', '${labelBookPrice}'],
                 colModel :[
-                    {name:'categoryName', index:'categoryName', width:100},
+                    {name:'category_name', index:'category_name', width:100},
                     {name:'isbn', index:'isbn', width:100},
                     {name:'title', index:'title', width:100},
                     {name:'publisher', index:'publisher', width:100},

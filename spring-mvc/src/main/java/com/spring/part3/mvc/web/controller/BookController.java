@@ -102,6 +102,7 @@ public class BookController {
         bookGrid.setTotalRecords(bookPage.getTotalElements());
 
         bookGrid.setBookData(Lists.newArrayList(bookPage.iterator()));
+        logger.info(bookGrid.getBookData().get(0).toString());
 
         return bookGrid;
     }
