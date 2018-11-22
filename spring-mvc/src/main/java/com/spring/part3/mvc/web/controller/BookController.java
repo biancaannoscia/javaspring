@@ -99,24 +99,32 @@ public class BookController {
     
 	//BindingResult used as an object to lookfor validation errors.
     @RequestMapping(method = RequestMethod.POST)
-    public String create(@Valid Book Book, BindingResult bindingResult, Model uiModel, 
+    public String create(@Valid Book book, BindingResult bindingResult, Model uiModel, 
 		HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes, 
 		Locale locale, @RequestParam(value="file", required=false) Part file) {
         logger.info("Creating Book");
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute("message", new Message("error",
-                    messageSource.getMessage("Book_save_fail", new Object[]{}, locale)));
-            uiModel.addAttribute("Book", Book);
-            return "Books/create";
+                    messageSource.getMessage("book_save_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("book", book);
+            return "books/create";
         }
         uiModel.asMap().clear();
         redirectAttributes.addFlashAttribute("message", new Message("success",
-                messageSource.getMessage("Book_save_success", new Object[]{}, locale)));
+                messageSource.getMessage("book_save_success", new Object[]{}, locale)));
 
-        logger.info("Book id: " + Book.getId());
+        logger.info("Book id: " + book.getId());
 
-        bookService.save(Book);
-        return "redirect:/books/";
+        bookService.save(book);
+        return "redirect:/books";
+    }
+    
+    @RequestMapping(params = "form", method = RequestMethod.GET)
+    public String createForm(Model uiModel) {
+        Book book = new Book();
+        uiModel.addAttribute("book", book);
+
+        return "books/create";
     }
 
     
