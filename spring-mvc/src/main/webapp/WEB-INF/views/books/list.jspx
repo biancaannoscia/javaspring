@@ -18,8 +18,8 @@
     <spring:message code="label_book_price" var="labelBookPrice"/>
     
     <!-- We declare an URL variable by using the <spring:url> tag and add an 
-        anchor link for the firstName attribute.  -->
-    <spring:url value="book" var="showBookUrl"/>
+        anchor link for the title attribute.  -->
+    <spring:url value="books" var="showBookUrl"/>
 
     <script type="text/javascript">
         $(function(){
@@ -30,7 +30,7 @@
                 colNames:['${labelBookCategoryName}', '${labelBookIsbn}',
                     '${labelBookTitle}', '${labelBookPublisher}', '${labelBookPrice}'],
                 colModel :[
-                    {name:' categoryName', index:'categoryName', width:150},
+                    {name:'categoryName', index:'categoryName', width:100},
                     {name:'isbn', index:'isbn', width:100},
                     {name:'title', index:'title', width:100},
                     {name:'publisher', index:'publisher', width:100},
@@ -46,8 +46,8 @@
                 },
                 pager: '#pager',
                 rowNum:10,
-                rowList:[10,20,30],
-                sortname: 'firstName',
+                rowList:[10,20,30,40,50],
+                sortname: 'title',
                 sortorder: 'asc',
                 viewrecords: true,
                 gridview: true,
