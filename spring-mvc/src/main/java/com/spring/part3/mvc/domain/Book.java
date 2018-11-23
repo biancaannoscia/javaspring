@@ -1,6 +1,7 @@
 package com.spring.part3.mvc.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -19,25 +20,21 @@ public class Book implements Serializable{
     private Long id;
     
 	@NotBlank(message="{validation.isbn.NotBlank.message}")
-	@Size(min=10, max=10, message="{validation.isbn.Size.message}")
 	@Column(name = "ISBN")
 	private String isbn;
 	
 	@NotBlank(message="{validation.title.NotBlank.message}")
-	@Size(min=2, max=200, message="{validation.title.Size.message}")
 	@Column(name = "TITLE")
 	private String title;
 	
-	@NotBlank(message="{validation.publisher.NotBlank.message}")
-	@Size(min=2, max=100, message="{validation.publisher.Size.message}")
 	@Column(name = "PUBLISHER")
 	private String publisher;
 	
 	@NotBlank(message="{validation.categoryname.NotBlank.message}")
-	@Size(min=2, max=100, message="{validation.categoryname.Size.message}")
 	@Column(name = "CATEGORY_NAME")
 	private String categoryName;
 	
+	@NotNull(message="{validation.price.NotNull.message}")
 	@Column(name = "PRICE")
 	private BigDecimal price;
 	
