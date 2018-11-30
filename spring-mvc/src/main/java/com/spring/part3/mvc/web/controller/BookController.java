@@ -116,7 +116,8 @@ public class BookController {
         logger.info("Book id: " + book.getId());
 
         bookService.save(book);
-        return "redirect:/books";
+        String id = book.getId().toString();
+        return "redirect:/books/" + id;
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
