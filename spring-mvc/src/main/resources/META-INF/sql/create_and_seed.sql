@@ -1,3 +1,15 @@
+CREATE TABLE BOOK (
+       ID INT(11) NOT NULL AUTO_INCREMENT
+     , CATEGORY_NAME VARCHAR(100) NOT NULL
+     , ISBN VARCHAR(10) NOT NULL
+     , TITLE VARCHAR(200) NOT NULL
+     , PUBLISHER VARCHAR(100) NOT NULL
+     , PRICE DECIMAL(4,2) NOT NULL
+     , UNIQUE UQ_BOOK (CATEGORY_NAME, TITLE)
+     , PRIMARY KEY (ID)
+);
+
+
 insert into book (category_name, isbn, title, price, publisher) values ('Romance', '1234567899', 'Romeo and Juliet', 11.11, 'Bianca');
 insert into book (category_name, isbn, title, price, publisher) values ('Fantasy', '9393847564', 'Harry Potter: And the Sorcerer Stone', 33.33, 'Bianca');
 insert into book (category_name, isbn, title, price, publisher) values ('Fantasy', '4847362937', 'Harry Potter: And the Deathly Hallows', 44.44, 'A Great Publisher');

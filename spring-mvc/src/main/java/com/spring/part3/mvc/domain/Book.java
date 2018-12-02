@@ -32,8 +32,9 @@ public class Book implements Serializable{
 	
 	@NotBlank(message="{validation.categoryname.NotBlank.message}")
 	@Column(name = "CATEGORY_NAME")
-	private String category_name;
+	private String categoryname;
 	
+
 	@NotNull(message="{validation.price.NotNull.message}")
 	@Column(name = "PRICE")
 	private BigDecimal price;
@@ -71,12 +72,14 @@ public class Book implements Serializable{
 		this.publisher = publisher;
 	}
 
-	public String getCategory_name() {
-		return category_name;
+
+	
+	public String getCategoryname() {
+		return categoryname;
 	}
 
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
+	public void setCategoryname(String categoryname) {
+		this.categoryname = categoryname;
 	}
 
 	public BigDecimal getPrice() {
@@ -88,7 +91,7 @@ public class Book implements Serializable{
 	}
 	
 	public String toString() {
-		return "Book - id: " + id + ", Category Name: " + category_name +", Title: " + title 
+		return "Book - id: " + id + ", Category Name: " + categoryname +", Title: " + title 
 				+ ", Publisher: " + publisher + ", ISBN: " + isbn + ", PRICE: " + price;
 	}
 

@@ -27,7 +27,7 @@
 
     <spring:message code="label_book_new" var="labelBookNew"/>
     <spring:message code="label_book_update" var="labelBookUpdate"/>
-    <spring:message code="label_book_category_name" var="labelBookCategoryName"/>
+    <spring:message code="label_book_categoryname" var="labelBookCategoryName"/>
     <spring:message code="label_book_isbn" var="labelBookIsbn"/>
     <spring:message code="label_book_title" var="labelBookTitle"/>
     <spring:message code="label_book_publisher" var="labelBookPublisher"/>
@@ -49,12 +49,12 @@
                 <div id="message" class="${message.type}">${message.message}</div>
             </c:if>
 
-            <form:label path="category_name">
+            <form:label path="categoryname">
                 ${labelBookCategoryName}*
             </form:label>
-            <form:input path="category_name" />
+            <form:input path="categoryname" />
             <div>
-                <form:errors path="category_name" cssClass="error" />
+                <form:errors path="categoryname" cssClass="error" />
             </div>
             <p/>
 

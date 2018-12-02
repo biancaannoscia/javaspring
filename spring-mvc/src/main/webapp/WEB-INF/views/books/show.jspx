@@ -12,7 +12,7 @@
     <jsp:output omit-xml-declaration="yes"/>
 
     <spring:message code="label_book_info" var="labelBookInfo"/>
-    <spring:message code="label_book_category_name" var="labelBookCategoryName"/>
+    <spring:message code="label_book_categoryname" var="labelBookCategoryName"/>
     <spring:message code="label_book_isbn" var="labelBookIsbn"/>
     <spring:message code="label_book_title" var="labelBookTitle"/>
     <spring:message code="label_book_publisher" var="labelBookPublisher"/>
@@ -35,7 +35,7 @@
         <table>
             <tr>
                 <td>${labelBookCategoryName}</td>
-                <td>${book.category_name}</td>
+                <td>${book.categoryname}</td>
             </tr>
             <tr>
                 <td>${labelBookIsbn}</td>
