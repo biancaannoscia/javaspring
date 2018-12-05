@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <beans:bean id ="passwordEncoder" class = "org.springframework.security.crypto.password.NoOpPasswordEncoder" factory-method = "getInstance" />
+    <http use-expressions="true">
+	    <!-- All users are allowed to enter the application. We will see how we can protect the function by hiding the editing options
+			in the view using Spring Security’s tag library and controller method security. -->
+        <intercept-url pattern='/*' access='permitAll' />
+		
+		<!-- Support for form login in nav bar on the left. Logut link is provided. Cross-Site Request Forgery (CSRF) is disabled. -->
+        <form-login login-page="/books" authentication-failure-url="/security/loginfail"
+                    default-target-url="/books" />
+            <csrf disabled="true"/>
+		    <!-- Redirect to home page on logout. -->
+            <logout logout-success-url="/books"/>
+    </http>
+
+	<!-- The authentication mechanism: we hard-code a single user with the role ROLE_USER assigned. 
+		In a production environment, the user should be authenticated against the database, LDAP, 
+		or an SSO mechanism. -->
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+               <user name="user" password="user" authorities="ROLE_USER" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+    
+</beans:beans>
